@@ -41,6 +41,10 @@ const updateContactById = async (id, name, email, phone) => {
   if (idx === -1) {
     return null
   }
+  name = name || contacts[idx].name
+  email = email || contacts[idx].email
+  phone = phone || contacts[idx].phone
+  id = String(id)
   contacts[idx] = { id, name, email, phone }
   await updateContacts(contacts)
   return contacts[idx]
