@@ -1,27 +1,39 @@
 {
-  "name": "y",
-  "version": "1.0.0",
+  "name": "goit-homework-nodejs",
+  "version": "1.2.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
-    "start:dev": "nodemon index"
+    "start": "cross-env NODE_ENV=production node ./server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
+    "lint": "eslint **/*.js",
+    "lint:fix": "eslint --fix **/*.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VladimyrK/goit-homework-nodejs-01.git"
+    "url": "git+https://github.com/VladimyrK/goit-homework-nodejs.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VladimyrK/goit-homework-nodejs-01/issues"
+    "url": "https://github.com/VladimyrK/goit-homework-nodejs/issues"
   },
-  "homepage": "https://github.com/VladimyrK/goit-homework-nodejs-01#readme",
+  "homepage": "https://github.com/VladimyrK/goit-homework-nodejs#readme",
   "devDependencies": {
+    "eslint": "7.19.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "16.0.3",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "5.2.0",
     "nodemon": "^2.0.19"
   },
   "dependencies": {
+    "cors": "2.8.5",
+    "cross-env": "7.0.3",
+    "express": "4.17.1",
+    "joi": "^17.6.0",
+    "morgan": "1.10.0",
     "nanoid": "^3.3.4",
     "yargs": "^17.5.1"
   }
