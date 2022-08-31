@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose')
 const Joi = require('joi')
+const { boolean } = require('yargs')
 
 const emailRegexp = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/
 
@@ -29,6 +30,14 @@ const userSchema = Schema(
       type: String,
       default: null,
     },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationToken: {
+      type: String,
+      required: [true, 'Verify token is required'],
+    },
   },
   { versionKey: false, timestamps: true },
 )
@@ -43,6 +52,10 @@ const loginSchema = Joi.object({
   password: Joi.string().min(6).required(),
 })
 
+const emailSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required(),
+})
+
 const updateSubscriptionSchema = Joi.object({
   subscription: Joi.string().required().valid('starter', 'pro', 'business'),
 })
@@ -50,6 +63,7 @@ const updateSubscriptionSchema = Joi.object({
 const schemas = {
   register: registerSchema,
   login: loginSchema,
+  email: emailSchema,
   subscription: updateSubscriptionSchema,
 }
 
